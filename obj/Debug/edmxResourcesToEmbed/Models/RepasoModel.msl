@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RepasodbModelStoreContainer" CdmEntityContainer="RepasodbEntities">
+    <EntitySetMapping Name="vehiculo">
+      <EntityTypeMapping TypeName="RepasodbModel.vehiculo">
+        <MappingFragment StoreEntitySet="vehiculo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accesorio">
+      <EntityTypeMapping TypeName="RepasodbModel.Accesorio">
+        <MappingFragment StoreEntitySet="Accesorio">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idvehiculo" ColumnName="idvehiculo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sp_ConsultarVehiculo" FunctionName="RepasodbModel.Store.Sp_ConsultarVehiculo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RepasodbModel.Sp_ConsultarVehiculo_Result">
+          <ScalarProperty Name="Id_vehiculo" ColumnName="Id vehiculo" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="Id_Accesorio" ColumnName="Id Accesorio" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_ConsultarVehiculo2" FunctionName="RepasodbModel.Store.Sp_ConsultarVehiculo2">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RepasodbModel.Sp_ConsultarVehiculo2_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="Id_Accesorio" ColumnName="Id Accesorio" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="idvehiculo" ColumnName="idvehiculo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

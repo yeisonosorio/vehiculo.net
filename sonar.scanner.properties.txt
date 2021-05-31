@@ -1,0 +1,8 @@
+sonar.projectkey=b77a5c561934e089
+sonar.projectName=entityFramework
+sonar.projectVersion=1.0
+sonar.source=./
+
+
+sonar.login=admin
+sonae.passwors=y.VCfcMCB6TQ*uL

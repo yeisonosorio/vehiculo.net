@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RepasodbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="vehiculo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="precio" Type="Int32" Nullable="false" />
+    <Property Name="foto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Accesorio" Relationship="RepasodbModel.FK__Accesorio__idveh__37A5467C" FromRole="vehiculo" ToRole="Accesorio" />
+  </EntityType>
+  <EntityContainer Name="RepasodbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="vehiculo" EntityType="Self.vehiculo" />
+    <EntitySet Name="Accesorio" EntityType="RepasodbModel.Accesorio" />
+    <AssociationSet Name="FK__Accesorio__idveh__37A5467C" Association="RepasodbModel.FK__Accesorio__idveh__37A5467C">
+      <End Role="vehiculo" EntitySet="vehiculo" />
+      <End Role="Accesorio" EntitySet="Accesorio" />
+    </AssociationSet>
+    <FunctionImport Name="Sp_ConsultarVehiculo" ReturnType="Collection(RepasodbModel.Sp_ConsultarVehiculo_Result)" />
+    <FunctionImport Name="Sp_ConsultarVehiculo2" ReturnType="Collection(RepasodbModel.Sp_ConsultarVehiculo2_Result)" />
+  </EntityContainer>
+  <EntityType Name="Accesorio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idvehiculo" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="vehiculo" Relationship="RepasodbModel.FK__Accesorio__idveh__37A5467C" FromRole="Accesorio" ToRole="vehiculo" />
+  </EntityType>
+  <Association Name="FK__Accesorio__idveh__37A5467C">
+    <End Type="RepasodbModel.vehiculo" Role="vehiculo" Multiplicity="1" />
+    <End Type="RepasodbModel.Accesorio" Role="Accesorio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehiculo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Accesorio">
+        <PropertyRef Name="idvehiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="Sp_ConsultarVehiculo_Result">
+    <Property Type="Int32" Name="Id_vehiculo" Nullable="false" />
+    <Property Type="String" Name="marca" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="precio" Nullable="false" />
+    <Property Type="String" Name="foto" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="Id_Accesorio" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="Sp_ConsultarVehiculo2_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="marca" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="precio" Nullable="false" />
+    <Property Type="String" Name="foto" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="Id_Accesorio" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="idvehiculo" Nullable="false" />
+  </ComplexType>
+</Schema>
